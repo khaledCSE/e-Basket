@@ -1,8 +1,19 @@
 const router = require('express').Router()
 const loggedin = require('../config/local-authenticator')
+const Product = require('../models/Product')
 
-router.get('/', (req, res) => {
-    res.render('index')
+router.get('/', async (req, res) => {
+    const products = await Product.find()
+
+    var productChunks = []
+    var chunkSize = 3
+
+    for( var i = 0; i < products.length; i += chunkSize ) {
+        productChunks.push(products.slice(i, i + chunkSize))
+    }
+    console.log(productChunks);
+    
+    res.render('index', { products: productChunks })
 })
 
 router.get('/register', (req, res) => {

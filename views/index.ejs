@@ -1,68 +1,20 @@
 <link rel="stylesheet" href="css/style.css">
 <%- include('partials/navbar') %>
 
-<div class="row justify-content-around">
-    <div class="col-md-4 col-sm-6">
-      <div class="card">
-        <img src="https://www.soccerpro.com/wp-content/uploads/2018/01/s82427_adidas_nemeziz_17_3_fg_y_01.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-success pull-right">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6">
-      <div class="card">
-        <img src="https://www.soccerpro.com/wp-content/uploads/cm7731_adidas_nemeziz_17_plus_fg_01.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-success pull-right">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6">
-        <div class="card">
-            <img src="https://www.soccerpro.com/wp-content/uploads/2018/01/s82427_adidas_nemeziz_17_3_fg_y_01.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-success pull-right">Add to Cart</a>
-          </div>
-        </div>
-      </div>
-  </div>
-
+<% for( var i = 0; i < products.length; i++ ) { %>
   <div class="row justify-content-around">
+  <% products[i].forEach((product) => { %>
     <div class="col-md-4 col-sm-6">
       <div class="card">
         <img src="https://www.soccerpro.com/wp-content/uploads/2018/01/s82427_adidas_nemeziz_17_3_fg_y_01.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <div class="price pull-left" style="font-size: x-large;">$150</div>
           <a href="#" class="btn btn-success pull-right">Add to Cart</a>
         </div>
       </div>
     </div>
-    <div class="col-md-4 col-sm-6">
-      <div class="card">
-        <img src="https://www.soccerpro.com/wp-content/uploads/cm7731_adidas_nemeziz_17_plus_fg_01.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-success pull-right">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6">
-        <div class="card">
-            <img src="https://www.soccerpro.com/wp-content/uploads/2018/01/s82427_adidas_nemeziz_17_3_fg_y_01.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-success pull-right">Add to Cart</a>
-          </div>
-        </div>
-      </div>
+  <% }) %>
   </div>
+<% } %>
