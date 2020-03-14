@@ -1,0 +1,21 @@
+.navbar-brand {
+    padding-left: 10%;
+}
+
+.card img {
+    max-height: 150px;
+    max-width: 180px;
+    align-self: center;
+}
+
+.row {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 5vh;
+}
+
+@media only screen and (max-width: 720px) {
+    .navbar-brand {
+        padding-left: 30%;
+    }    
+}
