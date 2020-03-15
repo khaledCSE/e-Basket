@@ -5,6 +5,7 @@ const session = require('express-session')
 const flash = require('express-flash')
 const ejsLayout = require('express-ejs-layouts')
 const path = require('path')
+const MongoStore = require('connect-mongo')(session)
 
 const app = express()
 
@@ -24,7 +25,9 @@ app.use(express.urlencoded({ extended: false }))
 app.use(session({
     secret: 'oursecret',
     saveUninitialized: false,
-    resave: false
+    resave: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { maxAge: 180 * 60 * 1000 }
 }))
 app.use(flash())
 app.use(passport.initialize())
@@ -33,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use((req, res, next) => {
     res.locals.login = req.isAuthenticated()
+    res.locals.session = req.session
     next()
 })
 
