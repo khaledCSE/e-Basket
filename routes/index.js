@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     for( var i = 0; i < products.length; i += chunkSize ) {
         productChunks.push(products.slice(i, i + chunkSize))
     }
-    console.log(productChunks);
+    //console.log(productChunks);
     
     res.render('index', { products: productChunks })
 })

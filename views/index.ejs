@@ -11,7 +11,7 @@
           <h5 class="card-title"><%= product.title %></h5>
           <p class="card-text"><%= product.description %></p>
           <div class="price pull-left" style="font-size: x-large;">$<%= product.price %></div>
-          <a href="#" class="btn btn-success pull-right">Add to Cart</a>
+          <a href="/cart/add/<%= product._id %>" class="btn btn-success pull-right">Add to Cart</a>
         </div>
       </div>
     </div>
