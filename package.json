@@ -5,7 +5,11 @@
   "scripts": {
     "test": "nodemon app.js"
   },
-  "keywords": ["e-basket", "ecommerce", "node.js"],
+  "keywords": [
+    "e-basket",
+    "ecommerce",
+    "node.js"
+  ],
   "author": "Md. Khaleduzzaman",
   "license": "MIT",
   "dependencies": {
@@ -15,6 +19,7 @@
     "express-ejs-layouts": "^2.5.0",
     "express-flash": "0.0.2",
     "express-session": "^1.17.0",
+    "express-validator": "^6.4.0",
     "mongoose": "^5.9.3",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"

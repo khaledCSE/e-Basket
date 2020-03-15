@@ -8,7 +8,8 @@ router.post('/register', async (req, res) => {
         const user_found = await User.findOne({ email: req.body.email })
 
         if (user_found) {
-            res.send('user already exists!')
+            req.flash('info', 'User already exists!')
+            res.redirect('/register')
         } else {
             const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
@@ -19,11 +20,12 @@ router.post('/register', async (req, res) => {
 
             const saved_user = await new_user.save()
             // console.log(saved_user)
-
+            req.flash('info', 'Successfully Registered! Please Login Again')
             res.redirect('/login')
         }
     } catch (error) {
-        res.send('db error')
+        req.flash('info', 'Something went wrong with the database! Please try again later')
+        res.redirect('/register')
     }
 })
 

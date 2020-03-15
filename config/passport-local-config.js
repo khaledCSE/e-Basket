@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy
 const passport = require('passport')
 
 module.exports = (passport) => {
-    passport.use( new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+    passport.use( new LocalStrategy({ usernameField: 'email', passwordField: 'password', passReqToCallback: true }, async (req, email, password, done) => {
         try {
             const user_found = await User.findOne({ email: email })
 

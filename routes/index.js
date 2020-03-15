@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const loggedin = require('../config/local-authenticator')
+const notLoggedin = require('../config/no-login')
 const Product = require('../models/Product')
 
 router.get('/', async (req, res) => {
@@ -16,10 +17,6 @@ router.get('/', async (req, res) => {
     res.render('index', { products: productChunks })
 })
 
-router.get('/register', (req, res) => {
-    res.render('register')
-})
-
 router.get('/login', (req, res) => {
     res.render('login')
 })
@@ -28,9 +25,13 @@ router.get('/dashboard', loggedin, (req, res) => {
     res.render('dashboard', { user: req.user })
 })
 
-router.get('/logout', (req, res) => {
+router.get('/logout', loggedin, (req, res) => {
     req.logout()
     res.redirect('/')
+})
+
+router.get('/register', notLoggedin , (req, res) => {
+    res.render('register')
 })
 
 module.exports = router

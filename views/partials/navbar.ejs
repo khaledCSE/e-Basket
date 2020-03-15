@@ -15,8 +15,13 @@
                 <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp; Account
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Logout</a>
+                <% if( login ) { %>
+                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                <% } else { %>
+                  <a class="dropdown-item" href="/register">Register</a>
+                  <a class="dropdown-item" href="/login">Login</a>
+                <% } %>
               </div>
             </li>
           </ul>
