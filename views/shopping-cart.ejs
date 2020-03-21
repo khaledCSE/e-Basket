@@ -22,9 +22,9 @@
                   <td style="font-weight: bold"><%= products[i].qty %></td>
                   <td><%= products[i].price %></td>
                   <td class="pull-right">
-                    <a href="/cart/increase/<%= products[i].item._id %>" class="btn btn-success">Add by 1</a>
+                    <a href="/cart/increase/<%= products[i].item._id %>" class="btn btn-success">Add by 1</a> &nbsp;
                     <a href="/cart/reduce/<%= products[i].item._id %>" class="btn btn-warning">Reduce by 1</a> &nbsp;
-                    <button class="btn btn-danger">Remove Product</button>
+                    <a href="/cart/remove/<%= products[i].item._id %>" class="btn btn-danger">Remove Product</a>
                   </td>
                 </tr>
               <% } %>
