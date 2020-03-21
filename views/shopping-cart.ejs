@@ -1,6 +1,6 @@
 <!-- <%- include('partials/navbar') %> -->
 
-<% if(products) { %>
+<% if(products && totalPrice != 0) { %>
   <div class="row" style="margin-top: 5%;">
     <div class="col-md-8 col-sm-10 offset-md-2">
       <h1 class="text-center" style="color: rgb(86, 126, 26);">Your e-Bakset</h1>
@@ -23,7 +23,7 @@
                   <td><%= products[i].price %></td>
                   <td class="pull-right">
                     <a href="/cart/increase/<%= products[i].item._id %>" class="btn btn-success">Add by 1</a>
-                    <button class="btn btn-warning">Reduce by 1</button> &nbsp;
+                    <a href="/cart/reduce/<%= products[i].item._id %>" class="btn btn-warning">Reduce by 1</a> &nbsp;
                     <button class="btn btn-danger">Remove Product</button>
                   </td>
                 </tr>

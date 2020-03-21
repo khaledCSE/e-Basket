@@ -9,7 +9,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" style="color: greenyellow;" href="/cart/details"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp; Cart
-                <% if( typeof session.cart != 'undefined' ) { %>
+                <% if( typeof session.cart != 'undefined' && session.cart.totalQty != 0 ) { %>
                   <span class="badge badge-light"><%= session.cart.totalQty %></span>
                 <% } %>
               </a>
