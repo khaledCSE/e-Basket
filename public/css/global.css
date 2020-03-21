@@ -1,0 +1,9 @@
+.navbar-brand {
+    padding-left: 10%;
+}
+
+@media only screen and (max-width: 720px) {
+    .navbar-brand {
+        padding-left: 30%;
+    }    
+}
