@@ -22,6 +22,7 @@
                   <td style="font-weight: bold"><%= products[i].qty %></td>
                   <td><%= products[i].price %></td>
                   <td class="pull-right">
+                    <a href="/cart/increase/<%= products[i].item._id %>" class="btn btn-success">Add by 1</a>
                     <button class="btn btn-warning">Reduce by 1</button> &nbsp;
                     <button class="btn btn-danger">Remove Product</button>
                   </td>
