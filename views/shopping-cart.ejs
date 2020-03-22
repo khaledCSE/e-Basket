@@ -1,39 +1,47 @@
 <!-- <%- include('partials/navbar') %> -->
+<!-- && totalPrice != 0 -->
 
-<% if(products && totalPrice != 0) { %>
-  <div class="row" style="margin-top: 5%;">
-    <div class="col-md-8 col-sm-10 offset-md-2">
-      <h1 class="text-center" style="color: rgb(86, 126, 26);">Your e-Bakset</h1>
-        <table class="table">
-            <thead class="thead" style="background-color: rgb(129, 192, 34);">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Product</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col"><center>Action</center></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% for( var i = 0; i < products.length; i++ ) { %>
+<% if(products) { %>
+  <% if(totalPrice != 0) { %>
+    <div class="row" style="margin-top: 5%;">
+      <div class="col-md-8 col-sm-10 offset-md-2">
+        <h1 class="text-center" style="color: rgb(86, 126, 26);">Your e-Bakset</h1>
+          <table class="table">
+              <thead class="thead" style="background-color: rgb(129, 192, 34);">
                 <tr>
-                  <th scope="row"><%= i + 1 %></th>
-                  <td><%= products[i].item.title %></td>
-                  <td style="font-weight: bold"><%= products[i].qty %></td>
-                  <td><%= products[i].price %></td>
-                  <td class="pull-right">
-                    <a href="/cart/increase/<%= products[i].item._id %>" class="btn btn-success">Add by 1</a> &nbsp;
-                    <a href="/cart/reduce/<%= products[i].item._id %>" class="btn btn-warning">Reduce by 1</a> &nbsp;
-                    <a href="/cart/remove/<%= products[i].item._id %>" class="btn btn-danger">Remove Product</a>
-                  </td>
+                  <th scope="col">#</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col"><center>Action</center></th>
                 </tr>
-              <% } %>
-            </tbody>
-          </table>
-            <h3>Total: $<%= totalPrice %></h3>
-            <button class="btn btn-success btn-lg" style="background-color: rgb(129, 192, 34); margin-top: 3vh;">Checkout <i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+              </thead>
+              <tbody>
+                <% for( var i = 0; i < products.length; i++ ) { %>
+                  <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td><%= products[i].item.title %></td>
+                    <td style="font-weight: bold"><%= products[i].qty %></td>
+                    <td><%= products[i].price %></td>
+                    <td class="pull-right">
+                      <a href="/cart/increase/<%= products[i].item._id %>" class="btn btn-success">Add by 1</a> &nbsp;
+                      <a href="/cart/reduce/<%= products[i].item._id %>" class="btn btn-warning">Reduce by 1</a> &nbsp;
+                      <a href="/cart/remove/<%= products[i].item._id %>" class="btn btn-danger">Remove Product</a>
+                    </td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+              <h3>Total: $<%= totalPrice %></h3>
+              <button class="btn btn-success btn-lg" style="background-color: rgb(129, 192, 34); margin-top: 3vh;">Checkout <i class="fa fa-credit-card-alt" aria-hidden="true"></i></button>
+      </div>
+  </div>
+  <% } else { %>
+    <div class="container text-center">
+      <h1 style="margin-top: 30vh;"><i class="fa fa-frown-o" style="font-size: 80px; color: indigo;" aria-hidden="true"></i></h1>
+      <h3 style="color: indigo; font-weight: bolder;">No Items in the shopping cart!</h3>
     </div>
-</div>
+  <% } %>
 <% } else { %>
   <div class="container text-center">
     <h1 style="margin-top: 30vh;"><i class="fa fa-frown-o" style="font-size: 80px; color: indigo;" aria-hidden="true"></i></h1>
