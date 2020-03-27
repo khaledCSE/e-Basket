@@ -10,10 +10,11 @@ module.exports = function Cart(oldCart) {
             storedItem = this.items[id] = { item: item, qty: 0, price: 0 }
         }
         storedItem.qty++
-        storedItem.price = storedItem.item.price * storedItem.qty
+        storedItem.price = parseFloat((storedItem.item.price * storedItem.qty).toFixed(2))
 
         this.totalQty++
         this.totalPrice += storedItem.item.price
+        this.totalPrice = parseFloat(this.totalPrice.toFixed(2))
     }
 
     this.reduceByOne = function(id) {
@@ -21,6 +22,7 @@ module.exports = function Cart(oldCart) {
         this.items[id].price -= this.items[id].item.price
         this.totalQty--
         this.totalPrice -= this.items[id].item.price
+        this.totalPrice = parseFloat(this.totalPrice.toFixed(2))
 
         if (this.items[id].qty <= 0) {
             delete this.items[id]
@@ -30,6 +32,7 @@ module.exports = function Cart(oldCart) {
     this.removeItem = function(id) {
         this.totalQty -= this.items[id].qty
         this.totalPrice -= this.items[id].price
+        this.totalPrice = parseFloat(this.totalPrice.toFixed(2))
         delete this.items[id]
     }
     

@@ -1,0 +1,40 @@
+#main {
+    margin-top: 10vh;
+}
+
+.form-control {
+    border: green 2px solid;
+    color: green;
+}
+
+.provider label {
+    font-size: 30px;
+}
+
+h4, h5, p, label {
+    color: green;
+    font-weight: bolder;
+}
+
+#switch {
+    color: #fff;
+    margin-top: 5vh;
+}
+
+.mobile-space {
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 720px) {
+    .provider label {
+        font-size: 20px;
+    }
+    #switch {
+        width: 98%;
+    }
+
+    .mobile-space {
+        height: 5vh;
+        visibility: visible;
+    }
+}

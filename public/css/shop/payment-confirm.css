@@ -1,0 +1,15 @@
+#main{
+    width: 90%;
+    margin-top: 5%;
+  }
+  #main h3 {
+    color: green;
+  }
+  #payment-fig {
+    width: 100%;
+  }
+  #total {
+    font-weight: bold;
+    font-size: 20px;
+    color: green;
+  }
