@@ -16,7 +16,11 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" style="color: greenyellow;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp; Account
+                <% if( login ) { %>
+                  <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp; Account
+                <% } else { %>
+                  <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp; Guest User
+                <% } %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <% if( login ) { %>

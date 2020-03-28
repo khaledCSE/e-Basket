@@ -31,7 +31,12 @@ router.get('/logout', loggedin, (req, res) => {
 })
 
 router.get('/register', notLoggedin , (req, res) => {
-    res.render('register')
+    res.render('signup-prompt')
+})
+
+router.get('/register/:userType', notLoggedin, (req, res) => {
+    const userType = req.params.userType
+    res.render('add-user', { userType: userType })
 })
 
 module.exports = router

@@ -1,0 +1,36 @@
+body {
+    background: linear-gradient(266deg, rgba(2,0,36,1) 0%, rgba(236,241,239,1) 0%, rgba(160,236,217,1) 8%);
+  }
+#main {
+    margin-top: 23vh;
+    background-color: lightgreen;
+    padding: 20px 40px 20px 40px;
+  }
+  #hero-txt {
+    font-size: 50px;
+    font-weight: bold;
+  }
+  #support {
+    font-size: 30px;
+  }
+  #redirect {
+    color: darkblue;
+    margin-top: 2vh;
+  }
+  #seller {
+    padding: 30px 25px 30px 25px;
+    font-size: 25px;
+    margin-bottom: 3vh;
+    font-weight: bold;
+    color: #fff;
+  }
+  #buyer {
+    padding: 30px 25px 30px 25px;
+    background-color: orange;
+    font-size: 25px;
+    margin-bottom: 3vh;
+    font-weight: bold;
+  }
+  #buyer:hover {
+    background-color: orangered;
+  }

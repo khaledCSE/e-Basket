@@ -1,0 +1,17 @@
+<% if( typeof messages.info_err != 'undefined' ) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><%= messages.info_err %></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<% } %>
+
+<% if( typeof messages.info != 'undefined' ) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><%= messages.info %></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<% } %>

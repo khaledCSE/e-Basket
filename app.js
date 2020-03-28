@@ -46,6 +46,7 @@ app.use((req, res, next) => {
 
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+app.use('/users', require('./routes/users'))
 app.use('/cart', require('./routes/cart'))
 app.use('/payments', require('./routes/payments'))
 
