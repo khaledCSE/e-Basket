@@ -4,7 +4,7 @@ const notLoggedin = require('../config/no-login')
 const Product = require('../models/Product')
 
 router.get('/', async (req, res) => {
-    const products = await Product.find()
+    const products = await Product.find({ status: 'accepted' })
 
     var productChunks = []
     var chunkSize = 3

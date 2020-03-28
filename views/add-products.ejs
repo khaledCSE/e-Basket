@@ -1,0 +1,25 @@
+<!-- form -->
+<div class="container col-md-10 col-lg-6" id="main">
+    <form action="#" method="post" enctype="multipart/form-data">
+      <h3 class="text-center">Add Product</h3>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="inputGroupFile01">Choose Product Image</label>
+        </div>
+      </div>
+      <label for="title" class="txtLabel">Product Title</label>
+      <input type="text" id="title" name="title" class="form-control">
+      <label for="description" class="txtLabel">Product Description</label>
+      <input type="text" id="description" name="description" class="form-control">
+      <label for="price" class="txtLabel">Price</label>
+      <input type="number" min="1" id="price" name="price" class="form-control">
+      <input type="text" name="status" value="pending" hidden>
+      <label for="inStock" class="txtLabel">Quantity</label>
+      <input type="number" min="1" id="inStock" name="inStock" class="form-control">
+      <button type="submit" id="btn" class="btn btn-success btn-block">Add Product</button>
+    </form>
+  </div>
