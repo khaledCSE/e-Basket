@@ -17,9 +17,9 @@ const buyerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    buyer_address: {
+    address: {
         type: String,
-        //required: true
+        required: true
     },
     post_code: {
         type: String,

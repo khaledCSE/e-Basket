@@ -8,8 +8,20 @@ const passport = require('passport')
 router.post('/register', async (req, res) => {
     try {
         const user_found = await User.findOne({ email: req.body.email })   
+        // console.log('This is what i got from body');
+        // console.log(req.body)
+        const email = req.body.email
+        const fname = req.body.fname
+        const lname = req.body.lname
+        const phone = req.body.phone
+        const address = req.body.address
+        const post_code = req.body.post_code
+        
+        // console.log(`email: ${email}\nfname: ${fname}\nlname: ${lname}\nphone: ${phone}\naddress: ${address}\npost_code: ${post_code}`);
+        
 
         if (user_found) {
+            
             req.flash('info_err', 'User already exists!')
             res.redirect('/register')
         } else {
@@ -34,12 +46,12 @@ router.post('/register', async (req, res) => {
                     } else {
                         // New Seller
                         const new_seller = new Seller()
-                        new_seller.email = req.body.email
-                        new_seller.fname = req.body.fname
-                        new_seller.lname = req.body.lname
-                        new_seller.phone = req.body.phone
-                        new_seller.seller_address = req.body.address
-                        new_seller.post_code = req.body.post_code
+                        new_seller.email = email
+                        new_seller.fname = fname
+                        new_seller.lname = lname
+                        new_seller.phone = phone
+                        new_seller.address = address
+                        new_seller.post_code = post_code
 
                         const saved_seller = await new_seller.save()
                         const saved_user = await new_user.save()
@@ -59,20 +71,20 @@ router.post('/register', async (req, res) => {
                 // Adding Buyer
                 try {
                     const buyer_found = await Buyer.findOne({ email: req.body.email })
+                    console.log(buyer_found);
                 
                     if (buyer_found) {
                         req.flash('info_err', 'Buyer already exists!')
                         res.redirect('/register')
                     } else {
                         // New buyer   
-
                         const new_buyer = new Buyer()
-                        new_buyer.email = req.body.email
-                        new_buyer.fname = req.body.fname
-                        new_buyer.lname = req.body.lname
-                        new_buyer.phone = req.body.phone
-                        new_buyer.buyer_address = req.body.address
-                        new_buyer.post_code = req.body.post_code
+                        new_buyer.email = email
+                        new_buyer.fname = fname
+                        new_buyer.lname = lname
+                        new_buyer.phone = phone
+                        new_buyer.address = address
+                        new_buyer.post_code = post_code
 
                         const saved_buyer = await new_buyer.save()
                         const saved_user = await new_user.save()

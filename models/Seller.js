@@ -17,7 +17,7 @@ const sellerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    seller_address: {
+    address: {
         type: String,
         required: true
     },
