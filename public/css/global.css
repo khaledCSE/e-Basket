@@ -1,9 +1,38 @@
+body {
+	background-color:rgba(160,236,217,1);
+}
+
 .navbar-brand {
     padding-left: 10%;
+    color: greenyellow !important;
+}
+
+#dropdown-menu {
+	background-color: rgb(2, 2, 41);
+	color: #adff2f;
+}
+#dropdown-menu .dropdown-item {
+	background-color: rgb(2, 2, 41);
+	color: #adff2f;
+}
+#dropdown-menu .dropdown-item:hover {
+	color: rgb(2, 2, 41);
+	background-color: #adff2f;
+}
+.nav-link span {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 18px;
+	border: 1px solid greenyellow;
+	padding: 8px 15px 8px 15px;
+	margin-left: 5px;
+	border-radius: 50%;
+	font-weight: bolder;
+	background-color: greenyellow;
+	color: black;
 }
 
 @media only screen and (max-width: 720px) {
-    .navbar-brand {
-        padding-left: 30%;
-    }    
+	.navbar-brand {
+		padding-left: 30%;
+	}
 }

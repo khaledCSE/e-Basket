@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/css/user/add-user.css">
+<script src="/js/user/add-user.js"></script>
+
+<!-- form -->
+<div class="container col-lg-6 col-md-10" id="main">
+    <form action="/users/register" method="post">
+      <h3 class="text-center">Register as a <%= userType %></h3>
+      <label for="email">Enter Email</label>
+      <input type="email" id="email" name="email" class="form-control" required>
+      <label for="pass">Enter Password</label>
+      <input type="password" id="pass" name="password" class="form-control" required>
+      <input type="text" name="role" value="<%= userType %>" hidden>
+      <input type="checkbox" class="css-checkbox" id="marker" onclick="shContent(this)">
+      <label for="marker" class="css-label">Proceed to Personal Information</label>
+      <div id="info" style="display: none;">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" id="fname" class="form-control" required>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label for="lname">Last Name</label>
+            <input type="text" name="lname" id="lname" class="form-control" required>
+          </div>
+        </div>
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone" class="form-control" required>
+        <label for="address">Address</label>
+        <input type="text" name="address" name="address" id="address" class="form-control" required>
+        <label for="post_code">Post Code</label>
+        <input type="text" name="post_code" id="post_code" class="form-control" required>
+        <input type="checkbox" class="css-checkbox" id="marker_tc" onclick="shSubmit(this)">
+        <label for="marker_tc" class="css-label">I agree with the e-Basket <a href="#" style="color: green; font-weight: bolder;">Terms and Conditions</a></label>
+        <button type="submit" id="btn" class="btn btn-success btn-block" style="display: none">Register Now</button>
+      </div>
+    </form>
+  </div>
+  <!-- form end -->

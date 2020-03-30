@@ -3,7 +3,7 @@ const Cart = require('../models/Cart')
 
 router.get('/checkout', (req, res) => {
     var cart = req.session.cart
-    res.render('checkout', { cart: cart })
+    res.render('shop/checkout', { cart: cart })
 })
 
 router.post('/checkout', (req, res) => {
@@ -51,7 +51,7 @@ router.post('/checkout', (req, res) => {
         // res.redirect('/payments/checkout')
         grandTotal = parseFloat((product_cost_sum + delivery_charge).toFixed(2))
 
-        res.render('confirm-payment', {
+        res.render('shop/confirm-payment', {
             products: products,
             totalPrice: cart.totalPrice,
             totalQty: cart.totalQty,

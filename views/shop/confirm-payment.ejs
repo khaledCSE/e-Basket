@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/css/shop/payment-confirm.css">
+
+<!-- body -->
+<div class="container-fluid" id="main">
+    <div class="row">
+      <div class="col-md-9 col-sm-12">
+        <h1 class="text-center" style="color: #28a745;">Your Order</h1>
+          <table class="table">
+              <thead class="thead" style="background-color: #28a745;">
+                <tr style="color: white">
+                  <th scope="col">#</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price (BDT.)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for( var i = 0; i < products.length; i++ ) { %>
+                  <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td><%= products[i].item.title %></td>
+                    <td style="font-weight: bold"><%= products[i].qty %></td>
+                    <td><%= products[i].price %></td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <h3>Payment Summery</h3>
+        <hr>
+        <table id="payment-fig">
+            <tr>
+                <td><b>Total Products:</b></td>
+                <td><%= totalQty %></td>
+              </tr>
+            <tr>
+                <td><b>Product Total:</b></td>
+                <td><%= totalPrice %></td>
+            </tr>
+            <tr>
+                <td><b>VAT(15%):</b></td>
+                <td><%= totalVat %></td>
+            </tr>
+            <tr>
+                <td><b>Delivery Charge:</b></td>
+                <td><%= deliveryCharge %></td>
+            </tr>
+        </table>
+        <p><b>Bearer:</b> &nbsp; <%= delivery %></p>
+        <hr>
+        <p id="total">Total: BDT. <%= grandTotal %></p>
+        <button class="btn btn-success btn-block">Confirm Purchase</button>
+      </div>
+    </div>
+  </div>
+<!-- end -->

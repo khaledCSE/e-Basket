@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style="background-color: rgb(2, 2, 41) !important;">
         <a class="navbar-brand" href="/">e-Basket</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
             <li class="nav-item">
                 <a class="nav-link" style="color: greenyellow;" href="/cart/details"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp; Cart
                 <% if( typeof session.cart != 'undefined' && session.cart.totalQty != 0 ) { %>
-                  <span class="badge badge-light"><%= session.cart.totalQty %></span>
+                  <span><%= session.cart.totalQty %></span>
                 <% } %>
               </a>
             </li>
@@ -22,7 +22,7 @@
                   <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp; Guest User
                 <% } %>
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdown-menu">
                 <% if( login ) { %>
                   <a class="dropdown-item" href="#">Profile</a>
                   <a class="dropdown-item" href="/logout">Logout</a>

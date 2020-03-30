@@ -14,15 +14,15 @@ router.get('/', async (req, res) => {
     }
     //console.log(productChunks);
     
-    res.render('index', { products: productChunks })
+    res.render('shop/index', { products: productChunks })
 })
 
 router.get('/login', (req, res) => {
-    res.render('login')
+    res.render('user/login')
 })
 
 router.get('/dashboard', loggedin, (req, res) => {
-    res.render('dashboard', { user: req.user })
+    res.render('user/dashboard', { user: req.user })
 })
 
 router.get('/logout', loggedin, (req, res) => {
@@ -31,12 +31,12 @@ router.get('/logout', loggedin, (req, res) => {
 })
 
 router.get('/register', notLoggedin , (req, res) => {
-    res.render('signup-prompt')
+    res.render('user/signup-prompt')
 })
 
 router.get('/register/:userType', notLoggedin, (req, res) => {
     const userType = req.params.userType
-    res.render('add-user', { userType: userType })
+    res.render('user/add-user', { userType: userType })
 })
 
 module.exports = router

@@ -45,11 +45,11 @@ router.get('/details', (req, res) => {
 
     if(!req.session.cart) {
         console.log('No Cart!');
-        res.render('shopping-cart', { products: null })   
+        res.render('shop/shopping-cart', { products: null })   
     } else {
         var cart = new Cart(req.session.cart)
         
-        res.render('shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice })
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice })
     }
 })
 
