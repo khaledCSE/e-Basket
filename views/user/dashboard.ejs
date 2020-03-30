@@ -1,5 +1,4 @@
 <%- include('../partials/messages') %>
-<h1 style="color: green;">Hello, <%= user.email %> as <%= user.role %></h1><br>
 <% if(user.role == 'seller') { %>
     <%- include('../partials/seller_dashboard.ejs') %>
 <% } %>

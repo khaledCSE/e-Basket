@@ -4,10 +4,24 @@ body {
 
 .navbar-brand {
     padding-left: 10%;
-    color: greenyellow !important;
+    /*color: greenyellow !important;*/
 }
 
-#dropdown-menu {
+.bg-mattBlackLight {
+	background-color: rgb(2, 2, 41);
+}
+
+.text-mattRed, .nav-link:hover .icon,
+.nav-link:hover .text, .nav-link.active .icon,
+.nav-link.active .text {
+  color: rgb(2, 2, 41);
+}
+
+.bg-mattBlackDark, body, .nav-link:hover, .nav-link.active {
+	background-color: rgba(160,236,217,1);
+  }
+
+/* #dropdown-menu {
 	background-color: rgb(2, 2, 41);
 	color: #adff2f;
 }
@@ -18,8 +32,8 @@ body {
 #dropdown-menu .dropdown-item:hover {
 	color: rgb(2, 2, 41);
 	background-color: #adff2f;
-}
-.nav-link span {
+} */
+.nav-link span#totalQty {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	font-size: 18px;
 	border: 1px solid greenyellow;
@@ -30,6 +44,26 @@ body {
 	background-color: greenyellow;
 	color: black;
 }
+
+#vnabdd {
+	background-color: rgb(2, 2, 41);
+  }
+
+  #vnabdd a {
+	color: greenyellow;
+  }
+
+  #vnabdd a:hover {
+	color: rgb(2, 2, 41);
+	background-color: rgba(160,236,217,1);
+  }
+
+  #mainNav .nav-link:hover {
+	color: rgb(2, 2, 41) !important;
+  }
+  #mainNav .nav-link:hover > #totalQty {
+	border: rgb(2, 2, 41) 2px solid;
+  }
 
 @media only screen and (max-width: 720px) {
 	.navbar-brand {
