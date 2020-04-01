@@ -6,13 +6,14 @@ const Product = require('../models/Product')
 router.get('/', async (req, res) => {
     const products = await Product.find({ status: 'accepted' })
 
-    var productChunks = []
-    var chunkSize = 3
+    if (products.length != 0) {
+        var productChunks = []
+        var chunkSize = 3
 
-    for( var i = 0; i < products.length; i += chunkSize ) {
-        productChunks.push(products.slice(i, i + chunkSize))
+        for( var i = 0; i < products.length; i += chunkSize ) {
+            productChunks.push(products.slice(i, i + chunkSize))
+        }   
     }
-    //console.log(productChunks);
     
     res.render('shop/index', { products: productChunks })
 })

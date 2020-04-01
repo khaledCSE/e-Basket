@@ -1,25 +1,33 @@
 <link rel="stylesheet" href="css/style.css">
+<%- include('../partials/messages') %>
 
-<% for( var i = 0; i < products.length; i++ ) { %>
-  <div class="row justify-content-around">
-  <% products[i].forEach((product) => { %>
-    <div class="col-md-4 col-sm-6">
-      <div class="card">
-        <img src="<%= product.imagePath %>" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"><%= product.title %></h5>
-          <p class="card-text"><%= product.description %></p>
-          <% if( product.inStock > 0 ) { %>
-            <p class="text-center" style="font-size: x-large; font-weight: bold; color: green;">In Stock: <%= product.inStock %></p>
-            <div class="price pull-left" style="font-size: x-large;">$<%= product.price %></div>
-            <a href="/cart/add/<%= product._id %>" class="btn btn-success pull-right">Add to Cart</a>
-          <% } else { %>
-            <p class="text-center" style="font-size: x-large; font-weight: bold; color: brown;">Out of Stock</p>
-            <div class="price pull-left disabled" style="font-size: x-large;">$<%= product.price %></div>
-          <% } %>
+<% if( typeof products != 'undefined' ) { %>
+  <% for( var i = 0; i < products.length; i++ ) { %>
+    <div class="row justify-content-around">
+    <% products[i].forEach((product) => { %>
+      <div class="col-md-4 col-sm-6">
+        <div class="card">
+          <img src="<%= product.imagePath %>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %></h5>
+            <p class="card-text"><%= product.description %></p>
+            <% if( product.inStock > 0 ) { %>
+              <p class="text-center" style="font-size: x-large; font-weight: bold; color: green;">In Stock: <%= product.inStock %></p>
+              <div class="price pull-left" style="font-size: x-large;">$<%= product.price %></div>
+              <a href="/cart/add/<%= product._id %>" class="btn btn-success pull-right">Add to Cart</a>
+            <% } else { %>
+              <p class="text-center" style="font-size: x-large; font-weight: bold; color: brown;">Out of Stock</p>
+              <div class="price pull-left disabled" style="font-size: x-large;">$<%= product.price %></div>
+            <% } %>
+          </div>
         </div>
       </div>
+    <% }) %>
     </div>
-  <% }) %>
+  <% } %>
+<% } else { %>
+  <div class="container text-center">
+    <h1 style="margin-top: 30vh;"><i class="fa fa-frown-o" style="font-size: 80px; color: indigo;" aria-hidden="true"></i></h1>
+    <h3 style="color: indigo; font-weight: bolder;">Website is under maintainance. Sorry for the inconvenience!</h3>
   </div>
 <% } %>

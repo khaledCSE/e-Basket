@@ -1,7 +1,6 @@
-body {
-    /*background: linear-gradient(266deg, rgba(2,0,36,1) 0%, rgba(236,241,239,1) 0%, rgba(160,236,217,1) 8%);*/
-    background: grey;
-  }
+/* body {
+    background: linear-gradient(266deg, rgba(2,0,36,1) 0%, rgba(236,241,239,1) 0%, rgba(160,236,217,1) 8%);
+}*/
 #main{
     margin-top: 10vh;
     padding: 20px;
@@ -19,6 +18,10 @@ body {
   }
   input[type=checkbox].css-checkbox {
     padding: 30px;
+  }
+
+  a {
+    font-weight: bold !important;
   }
   @media only screen and (max-width: 720px) {
     #main{

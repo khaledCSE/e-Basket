@@ -1,9 +1,11 @@
-<div class="container col-md-4 col-sm-10">
-    <h1 class="text-center">Login</h1>
+<link rel="stylesheet" href="/css/product/add-product.css">
+<div class="container col-md-4 col-sm-10" id="main">
     <form action="/auth/login" method="post">
+        <h1 class="text-center">e-Basket Login</h1>
         <div class="element"><label for="email">Email</label><input type="email" class="form-control" name="email" id="email"></div>
         <div class="element"><label for="password">Password:</label><input type="password" class="form-control" name="password" id="password"></div>
-        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 3vh;">Login</button>
+        <button type="submit" class="btn btn-success btn-block" style="margin-top: 3vh;">Login</button>
+        <br>
+        <a href="/register" style="color: forestgreen; font-size: large; font-weight: bold;">Don't have an account? | Register</a>
     </form>
-    <a href="/register">Don't have an account? | Register</a>
 </div>
