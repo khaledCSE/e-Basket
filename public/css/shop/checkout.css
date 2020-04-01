@@ -1,5 +1,7 @@
 #main {
     margin-top: 10vh;
+    background-color: lightgreen;
+    padding: 30px;
 }
 
 .form-control {

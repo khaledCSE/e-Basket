@@ -18,12 +18,12 @@ router.get('/', async (req, res) => {
     res.render('shop/index', { products: productChunks })
 })
 
-router.get('/login', (req, res) => {
-    res.render('user/login')
-})
 
-router.get('/dashboard', loggedin, (req, res) => {
-    res.render('user/dashboard', { user: req.user })
+router.get('/dashboard', loggedin, async (req, res) => {
+    const user_Products = await Product.count({ email: req.user.email })
+    const pending = await Product.count({ email: req.user.email, status: 'pending' })
+
+    res.render('user/dashboard', { user: req.user, products: user_Products, pending: pending })
 })
 
 router.get('/logout', loggedin, (req, res) => {
@@ -33,6 +33,10 @@ router.get('/logout', loggedin, (req, res) => {
 
 router.get('/register', notLoggedin , (req, res) => {
     res.render('user/signup-prompt')
+})
+
+router.get('/login', notLoggedin, (req, res) => {
+    res.render('user/login')
 })
 
 router.get('/register/:userType', notLoggedin, (req, res) => {
