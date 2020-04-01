@@ -1,0 +1,71 @@
+/* Profile */
+#main {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 5vh; */
+}
+.header_ {
+    /*background: rgb(2, 2, 41);*/
+    background-color: teal;
+    padding: 20px;
+    color: greenyellow;
+}
+#avatar {
+    height: 160px;
+    width: 180px;
+    border-radius: 50%;
+}
+#chImg {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: greenyellow;
+}
+
+#chImg:hover {
+    /* color:rgba(160,236,217,1); */
+    color: red;
+}
+
+.info {
+    background-color: lightgreen;
+    color:rgb(2, 2, 41);
+    padding: 50px;
+}
+.tag {
+    font-size: 20px;
+}
+hr {
+    border-color: black;
+}
+.info p {
+    font-size: 20px;
+}
+table {
+    font-size: 20px;
+    width: 40%;
+}
+td {
+    padding-top: 2vh;
+}
+.tag {
+    font-weight: bolder;
+    font-size: 20px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+.data {
+    font-size: 20px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+@media only screen and (max-width: 720px) {
+    #main {
+        width: 100%;
+    }
+    .info {
+        padding-left: 10px;
+    }
+}
+/* Profile end */

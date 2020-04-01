@@ -21,6 +21,10 @@ const buyerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    city: {
+        type: String,
+        required: true
+    },
     post_code: {
         type: String,
         required: true

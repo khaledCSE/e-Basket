@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="/css/user/account-info.css">
+<!-- profile -->
+<div id="main">
+    <div class="header_ text-center">
+        <a class="btn" id="chImg">Change Photo<i class="material-icons icon"> create </i></a>
+        <img src="https://1.bp.blogspot.com/-8d7Veg4rt70/TfiwFu8BlYI/AAAAAAAAAF0/HpaO4dDBVeg/s1600/profile-picture.gif" alt="" id="avatar">
+        <% var name = '' + user.fname + ' ' + user.lname %>
+        <h1 id="name"><%= name %></h1>
+        <h3 style="text-transform: capitalize;"><%= role %></h3>
+        <p><%= user.email %></p>
+    </div>
+    <div class="info">
+        <h3 class="prompt">Personal Information</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-10 col-lg-2 tag">First Name:</div>
+            <div class="col-md-10 col-lg-8 data"><%= user.fname %></div>
+        </div>
+        <div class="row" >
+            <div class="col-md-10 col-lg-2 tag">Last Name:</div>
+            <div class="col-md-10 col-lg-8 data"><%= user.lname %></div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-lg-2 tag">Work Email:</div>
+            <div class="col-md-10 col-lg-8 data"><%= user.email %></div>
+        </div>
+        <div class="row" >
+            <div class="col-md-10 col-lg-2 tag">Work Phone:</div>
+            <div class="col-md-10 col-lg-8 data"><%= user.phone %></div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-lg-2 tag">Address:</div>
+            <div class="col-md-10 col-lg-8 data"><%= user.address %></div>
+        </div>
+        <div class="row" >
+            <div class="col-md-10 col-lg-2 tag">City:</div>
+            <div class="col-md-10 col-lg-8 data"><%= user.city %></div>
+        </div>
+        <div class="row" >
+            <div class="col-md-10 col-lg-2 tag">Post Code:</div>
+            <div class="col-md-10 col-lg-8 data"><%= user.post_code %></div>
+        </div>
+    </div>
+
+    <div class="info">
+        <h3 class="prompt">Account Settings</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-10 col-lg-2 tag">Avatar:</div>
+            <div class="col-md-10 col-lg-8 data"><a href="" class="btn btn-warning">Change Now</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-lg-2 tag">Work Email:</div>
+            <div class="col-md-10 col-lg-8 data"><a href="" class="btn btn-warning">Change Now</a></div>
+        </div>
+        <div class="row" >
+            <div class="col-md-10 col-lg-2 tag">Work Phone:</div>
+            <div class="col-md-10 col-lg-8 data"><a href="" class="btn btn-warning">Change Now</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-lg-2 tag">Address:</div>
+            <div class="col-md-10 col-lg-8 data"><a href="" class="btn btn-warning">Change Now</a></div>
+        </div>
+        <div class="row" >
+            <div class="col-md-10 col-lg-2 tag">Security:</div>
+            <div class="col-md-10 col-lg-8 data"><a href="" class="btn btn-danger">Delete Account</a></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- profile end -->

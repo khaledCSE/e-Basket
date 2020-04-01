@@ -5,6 +5,20 @@ const Buyer = require('../models/Buyer')
 const Seller = require('../models/Seller')
 const passport = require('passport')
 
+const loggedin = require('../config/local-authenticator')
+
+router.get('/profile', loggedin, async (req, res) => {
+    const role = req.user.role
+
+    if (role == 'seller') {
+        const seller_found = await Seller.findOne({ email: req.user.email })
+        res.render('user/account-info', { user: seller_found, role: req.user.role })
+    } else {
+        const buyer_found = await Buyer.findOne({ email: req.user.email })
+        res.render('user/account-info', { user:buyer_found, role: req.user.role })   
+    }
+})
+
 router.post('/register', async (req, res) => {
     try {
         const user_found = await User.findOne({ email: req.body.email })   
@@ -15,6 +29,7 @@ router.post('/register', async (req, res) => {
         const lname = req.body.lname
         const phone = req.body.phone
         const address = req.body.address
+        const city = req.body.city
         const post_code = req.body.post_code
         
         // console.log(`email: ${email}\nfname: ${fname}\nlname: ${lname}\nphone: ${phone}\naddress: ${address}\npost_code: ${post_code}`);
@@ -51,6 +66,7 @@ router.post('/register', async (req, res) => {
                         new_seller.lname = lname
                         new_seller.phone = phone
                         new_seller.address = address
+                        new_seller.city = city
                         new_seller.post_code = post_code
 
                         const saved_seller = await new_seller.save()
@@ -84,6 +100,7 @@ router.post('/register', async (req, res) => {
                         new_buyer.lname = lname
                         new_buyer.phone = phone
                         new_buyer.address = address
+                        new_buyer.city = city
                         new_buyer.post_code = post_code
 
                         const saved_buyer = await new_buyer.save()
