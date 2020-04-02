@@ -49,11 +49,13 @@ router.post('/add', loggedin, async (req, res) => {
         } else {
             // New Product
             const uploaded = await cloudinary.uploader.upload(img.tempFilePath, { folder: 'products/' })
+            console.log(uploaded);
             
             // Save New Product
             const new_product = new Product({
                 email: req.user.email,
                 imagePath: uploaded.url,
+                image_id: uploaded.public_id,
                 category: category,
                 title: title,
                 description: description,
@@ -73,6 +75,17 @@ router.post('/add', loggedin, async (req, res) => {
         req.flash('info_err', 'Database Error!')
         res.redirect('/products/add')
     }
+})
+
+router.get('/delete/:id', loggedin, async (req, res) => {
+    const product_id = req.params.id
+    const product_found = await Product.findOne({ _id: product_id })
+
+    const public_id = product_found.image_id
+    const result = await cloudinary.uploader.destroy(public_id)
+    const removed_product = await Product.findOneAndDelete({ _id: product_id })
+    req.flash('info', 'Product Deleted!')
+    res.redirect('/products/add')
 })
 
 module.exports = router
