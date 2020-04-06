@@ -77,6 +77,19 @@ router.post('/add', loggedin, async (req, res) => {
     }
 })
 
+router.get('/confirm/:id', loggedin, async (req, res) => {
+    if (req.user.role == 'admin') {
+        const product_id = req.params.id
+        const updated = await Product.findOneAndUpdate({ _id: product_id }, { status: 'accepted' })
+
+        req.flash('info', 'Added the product!')
+        res.redirect('/dashboard')
+    } else {
+        req.flash('info_err', 'Only an admin can confirm a product!')
+        res.redirect('/dashboard')
+    }
+})
+
 router.get('/delete/:id', loggedin, async (req, res) => {
     const product_id = req.params.id
     const product_found = await Product.findOne({ _id: product_id })

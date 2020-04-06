@@ -13,11 +13,11 @@
             <p class="card-text"><%= product.description %></p>
             <% if( product.inStock > 0 ) { %>
               <p class="text-center" style="font-size: x-large; font-weight: bold; color: green;">In Stock: <%= product.inStock %></p>
-              <div class="price pull-left" style="font-size: x-large;">$<%= product.price %></div>
+              <div class="price pull-left" style="font-size: x-large;">&#2547 <%= product.price %></div>
               <a href="/cart/add/<%= product._id %>" class="btn btn-success pull-right">Add to Cart</a>
             <% } else { %>
               <p class="text-center" style="font-size: x-large; font-weight: bold; color: brown;">Out of Stock</p>
-              <div class="price pull-left disabled" style="font-size: x-large;">$<%= product.price %></div>
+              <div class="price pull-left disabled" style="font-size: x-large;">&#2547 <%= product.price %></div>
             <% } %>
           </div>
         </div>

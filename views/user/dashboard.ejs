@@ -1,4 +1,10 @@
-<%- include('../partials/messages') %>
+<div class="container text-center">
+    <%- include('../partials/messages') %>
+</div>
 <% if(user.role == 'seller') { %>
     <%- include('../partials/seller_dashboard.ejs') %>
+<% } else if(user.role == 'buyer') { %>
+    Buyer
+<% } else { %>
+    <%- include('../partials/admin_dashboard.ejs') %>
 <% } %>
