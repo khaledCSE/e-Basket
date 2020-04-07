@@ -16,7 +16,7 @@ router.get('/add', loggedin, (req, res) => {
     //console.log(req.user);
     
     if (req.user) {
-        if (req.user.role == 'seller') {
+        if (req.user.role == 'seller' || req.user.role == 'admin') {
             res.render('product/add-products')   
         } else {
             req.flash('info_err', 'You must be a seller to access that area')
