@@ -34,6 +34,28 @@
   color: rgb(2, 2, 41);
 }
 
+/* Re-designing Cards */
+.content #dashboard-card-1 {
+  background: linear-gradient(120deg, rgb(50, 170, 50), rgb(9, 218, 218));
+  color: #ff2;
+}
+
+.content #dashboard-card-2 {
+  background: linear-gradient(120deg, rgb(206, 206, 2), rgb(221, 133, 2));
+  color: rgb(2, 2, 41);
+}
+
+.content #dashboard-card-3 {
+  background: linear-gradient(120deg, brown, tomato);
+  color: #ff2;
+}
+
+.content #dashboard-card-4 {
+  background: linear-gradient(120deg, rgb(0, 0, 128), rgb(2, 233, 233));
+  color: #ff2;
+}
+/***************************************************/
+
 * {
   font-family: 'Poppins', sans-serif;
 }
