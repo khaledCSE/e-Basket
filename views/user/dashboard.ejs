@@ -5,6 +5,8 @@
     <%- include('../partials/seller_dashboard.ejs') %>
 <% } else if(user.role == 'buyer') { %>
     Buyer
+<% } else if(user.role == 'delivery_man') { %>
+    <%- include('../partials/delivery_man_dashboard.ejs') %>
 <% } else { %>
     <%- include('../partials/admin_dashboard.ejs') %>
 <% } %>

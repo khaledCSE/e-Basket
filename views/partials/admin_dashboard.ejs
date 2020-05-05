@@ -14,6 +14,20 @@
         background-color: greenyellow;
         color: rgb(2, 2, 41);
     }
+    .modal-content {
+            background: rgb(2, 2, 41);
+            color: greenyellow;
+        }
+    .modal-footer .btn {
+        background: transparent;
+        color: greenyellow;
+        border: 1px solid greenyellow;
+    }
+    .modal-footer .btn:hover {
+        background: greenyellow;
+        color: rgb(2, 2, 41);
+        transition: 1s ease;
+    }
 </style>
 
 <div class="wrapper d-flex">
@@ -26,6 +40,14 @@
                 dashboard
               </i>
               <span class="text">Hello, Admin</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-2" type="button" data-toggle="modal" data-target="#userModal">
+              <i class="material-icons icon">
+                supervisor_account
+              </i>
+              <span class="text">User Operations</span>
             </a>
           </li>
           <li class="nav-item">
@@ -162,3 +184,26 @@
       </main>
     </div>
   </div>
+
+  <!-- User Modal -->
+  <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">User Operations</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="color: greenyellow;">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Please Choose a User Operation
+        </div>
+        <div class="modal-footer justify-content-center">
+          <a href="/users/add" type="button" class="btn">Add User</a>
+          <a type="button" class="btn">Modify User Info</a>
+          <a class="btn">Delete User</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- User Modal end -->

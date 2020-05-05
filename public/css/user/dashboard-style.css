@@ -36,7 +36,8 @@
 
 /* Re-designing Cards */
 .content #dashboard-card-1 {
-  background: linear-gradient(120deg, rgb(50, 170, 50), rgb(9, 218, 218));
+  /* background: linear-gradient(120deg, rgb(50, 170, 50), rgb(9, 218, 218)); */
+  background: rgb(50, 170, 50);
   color: #ff2;
 }
 
@@ -51,7 +52,8 @@
 }
 
 .content #dashboard-card-4 {
-  background: linear-gradient(120deg, rgb(0, 0, 128), rgb(2, 233, 233));
+  /* background: linear-gradient(120deg, rgb(0, 0, 128), rgb(2, 233, 233)); */
+  background: rgb(0, 0, 128);
   color: #ff2;
 }
 /***************************************************/

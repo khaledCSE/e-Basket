@@ -19,6 +19,8 @@ router.get('/profile', loggedin, async (req, res) => {
     }
 })
 
+router.get('/add', loggedin, (req, res) => res.render('user/register'))
+
 router.post('/register', async (req, res) => {
     try {
         const user_found = await User.findOne({ email: req.body.email })   

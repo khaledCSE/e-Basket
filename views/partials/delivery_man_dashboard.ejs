@@ -1,0 +1,41 @@
+<style>
+    #delivery-form {
+        background: lightgreen;
+        color: darkgreen;
+        padding: 30px;
+        margin-top: 15vh;
+        border: 2px solid #000;
+    }
+    #delivery-form label {
+        color: darkgreen;
+        font-weight: bold;
+    }
+    #delivery-form > input {
+        border: 2px solid darkgreen;
+    }
+    @media only screen and (max-width: 720px) {
+        #delivery-form h1 {
+            font-size: 25px;
+        }
+        #delivery-form h4 {
+            font-size: 18px;
+        }
+        #delivery-form {
+        padding: 30px 15px;
+    }
+    }
+</style>
+<div class="container col-lg-6 col-md-12">
+    <form action="#" method="post" id="delivery-form">
+        <center>
+            <h1>Welcome <span style="text-decoration: underline;"><%= user.email %></span></h1>
+            <h4>Enter Confirmation Information Below</h4><hr>
+        </center>
+        <br>
+        <label for="order_id">Order ID</label>
+        <input type="text" class="form-control" id="order_id" name="order_id" required><br>  
+        <label for="confirmation_code">Confirmation Code</label>
+        <input type="text" class="form-control" id="confirmation_code" required><br>
+        <button class="btn btn-success btn-block" type="submit">Confirm Payment</button>
+    </form>
+</div>

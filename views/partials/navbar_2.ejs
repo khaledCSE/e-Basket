@@ -17,6 +17,7 @@
             </a>
           </li>
           <% if(typeof user != 'undefined') { %>
+            <a class="nav-link" style="color: greenyellow;" href="/dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp; Dashboard</a>
             <% if( user.role == 'seller' ) { %>
               <li class="nav-item dropdown" id="mobile_products">
                 <a class="nav-link dropdown-toggle" style="color: greenyellow;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
