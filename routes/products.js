@@ -12,6 +12,11 @@ const productController = require('../controllers/product-controller')
 
 cloudinary.config(productController.cloudinaryOptions)
 
+router.get('/', async (req, res) => {
+    const products = await Product.find()
+    res.render('product/all_products', { products: products })
+})
+
 router.get('/add', loggedin, (req, res) => {
     //console.log(req.user);
     
