@@ -14,7 +14,11 @@ router.get('/add/:id', (req, res) => {
         }
         cart.add(product, product.id)
         req.session.cart = cart
-        console.log(req.session.cart);
+        if (req.session.cart.items[productId].qty > product.inStock) {
+            console.log('Product Limit Exceeds!');
+            req.session.cart.reduceByOne(productId)
+            req.flash('info_err', 'Cannot order more products than the store has!') 
+        }
         
         res.redirect('/')
     })
@@ -63,7 +67,11 @@ router.get('/increase/:id', (req, res) => {
         }
         cart.add(product, product.id)
         req.session.cart = cart
-        console.log(req.session.cart);
+        if (req.session.cart.items[productId].qty > product.inStock) {
+            console.log('Product Limit Exceeds!');
+            req.session.cart.reduceByOne(productId)
+            req.flash('info_err', 'Cannot order more products than the store has!') 
+        }
         
         res.redirect('/cart/details')
     })
