@@ -58,6 +58,7 @@ app.use('/users', require('./routes/users'))
 app.use('/products', require('./routes/products'))
 app.use('/cart', require('./routes/cart'))
 app.use('/payments', require('./routes/payments'))
+app.use('/orders', require('./routes/orders'))
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`listening on http://localhost:${port}`))

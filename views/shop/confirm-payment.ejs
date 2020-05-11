@@ -50,7 +50,22 @@
         <p><b>Bearer:</b> &nbsp; <%= delivery %></p>
         <hr>
         <p id="total">Total: BDT. <%= grandTotal %></p>
-        <button class="btn btn-success btn-block">Confirm Purchase</button>
+        <form action="/orders/confirm" method="POST">
+          <!-- <input type="hidden" value="<%=  %>" name="fname">
+          <input type="hidden" value="<%=  %>" name="lname">
+          <input type="hidden" value="<%=  %>" name="email">
+          <input type="hidden" value="<%=  %>" name="phone">
+          <input type="hidden" value="<%=  %>" name="address">
+          <input type="hidden" value="<%=  %>" name="city">
+          <input type="hidden" value="<%=  %>" name="post_code"> -->
+          <input type="hidden" value="<%= totalQty %>" name="totalQty">
+          <input type="hidden" value="<%= totalPrice %>" name="totalPrice">
+          <input type="hidden" value="<%= deliveryCharge %>" name="totalVat">
+          <input type="hidden" value="<%= deliveryCharge %>" name="deliveryCharge">
+          <input type="hidden" value="<%= delivery %>" name="delivery">
+          <input type="hidden" value="<%= grandTotal %>" name="grandTotal">
+          <button class="btn btn-success btn-block">Confirm Purchase</button>
+        </form>
       </div>
     </div>
   </div>

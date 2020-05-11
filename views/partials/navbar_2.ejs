@@ -12,7 +12,9 @@
           <li class="nav-item">
               <a class="nav-link" style="color: greenyellow;" href="/cart/details"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp; Cart
                 <% if( typeof session.cart != 'undefined' && session.cart.totalQty != 0 ) { %>
-                    <span id="totalQty"><%= session.cart.totalQty %></span>
+                    <% if( typeof session.cart.totalQty != 'undefined' ) { %>
+                      <span id="totalQty"><%= session.cart.totalQty %></span>
+                    <% } %>
                   <% } %>
             </a>
           </li>
