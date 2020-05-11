@@ -20,8 +20,14 @@ router.post('/register', async (req, res) => {
 
             const saved_user = await new_user.save()
             // console.log(saved_user)
-            req.flash('info', 'Successfully Registered! Please Login Again')
-            res.redirect('/login')
+            if (req.session.oldUrl) {
+                var oldUrl = req.session.oldUrl
+                req.session.oldUrl = null
+                res.redirect(oldUrl)
+            } else {
+                req.flash('info', 'Successfully Registered! Please Login Again')
+                res.redirect('/login')
+            }
         }
     } catch (error) {
         req.flash('info', 'Something went wrong with the database! Please try again later')
@@ -31,9 +37,15 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
     failureRedirect: '/login',
-    successRedirect: '/dashboard'
-}), function (req, res) {
-    res.send('hey')
+    // successRedirect: '/dashboard'
+}), (req, res) => {
+    if (req.session.oldUrl) {
+        var oldUrl = req.session.oldUrl
+        req.session.oldUrl = null
+        res.redirect(oldUrl)
+    } else {
+        res.redirect('/dashboard')
+    }
 })
 
 module.exports = router

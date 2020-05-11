@@ -3,7 +3,9 @@ const Cart = require('../models/Cart')
 const productModel = require('../models/Product')
 const Order = require('../models/Order')
 
-router.get('/checkout', (req, res) => {
+const loggedIn = require('../config/local-authenticator')
+
+router.get('/checkout', loggedIn, (req, res) => {
     var cart = req.session.cart
     res.render('shop/checkout', { cart: cart })
 })

@@ -52,7 +52,8 @@ router.get('/details', (req, res) => {
         res.render('shop/shopping-cart', { products: null })   
     } else {
         var cart = new Cart(req.session.cart)
-        
+        const oldUrl = '/payments/checkout'
+        req.session.oldUrl = oldUrl
         res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice })
     }
 })
