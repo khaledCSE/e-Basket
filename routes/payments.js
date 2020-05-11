@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Cart = require('../models/Cart')
 const productModel = require('../models/Product')
+const Order = require('../models/Order')
 
 router.get('/checkout', (req, res) => {
     var cart = req.session.cart
@@ -50,6 +51,24 @@ router.post('/checkout', async (req, res) => {
                     { _id: product_id }, { inStock: newStock }
                 )
             }
+
+            // Save Order
+            const new_order = await new Order({
+                user: req.user,
+                cart: req.session.cart,
+                fname: fname,
+                lname: lname,
+                email: email,
+                phone: phone,
+                address: address,
+                city: city,
+                post_code: post_code,
+                status: 'pending',
+                totalQty: req.session.cart.totalQty,
+                delivery: delivery,
+                grandTotal: grandTotal
+            })
+            const saved_order = await new_order.save()
 
             req.session.cart = {}
             req.flash('info', 'Purchase Complete! Thanks for shopping with e-Basket')

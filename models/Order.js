@@ -12,8 +12,6 @@ const orderSchema = new mongoose.Schema({
     post_code: { type: String, required: true},
     status: { type: String, required: true},
     totalQty: { type: Number, required: true},
-    totalVat: { type: Number, required: true},
-    deliveryCharge: { type: Number, required: true},
     delivery: { type: String, required: true},
     grandTotal: { type: String, required: true}
 })
