@@ -3,6 +3,9 @@ const loggedin = require('../config/local-authenticator')
 const notLoggedin = require('../config/no-login')
 const Product = require('../models/Product')
 const Seller = require('../models/Seller')
+const Order = require('../models/Order')
+const Cart = require('../models/Cart')
+const User = require('../models/User')
 
 router.get('/', async (req, res) => {
     const products = await Product.find({ status: 'accepted' })
@@ -34,6 +37,16 @@ router.get('/dashboard', loggedin, async (req, res) => {
             pending: pending,
             product_list: products
         })   
+    } else if(role == 'buyer') {
+        const user = await User.findOne({ email: req.user.email })
+        const orders = await Order.find({ user: user })
+        orders.forEach((order) => {
+            cart = new Cart(order.cart)
+            order.items = cart.generateArray()
+        })
+        
+        res.render('user/dashboard', { orders: orders })
+
     } else {
         const sellers = await Seller.countDocuments()
         const products = await Product.countDocuments({ status: 'accepted' })

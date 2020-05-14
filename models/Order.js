@@ -13,7 +13,8 @@ const orderSchema = new mongoose.Schema({
     status: { type: String, required: true},
     totalQty: { type: Number, required: true},
     delivery: { type: String, required: true},
-    grandTotal: { type: String, required: true}
+    grandTotal: { type: String, required: true},
+    verification: { type: String, required: true}
 })
 
 module.exports = mongoose.model('Orders', orderSchema)

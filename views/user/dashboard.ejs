@@ -4,7 +4,7 @@
 <% if(user.role == 'seller') { %>
     <%- include('../partials/seller_dashboard.ejs') %>
 <% } else if(user.role == 'buyer') { %>
-    Buyer
+    <%- include('../partials/buyer_dashboard.ejs') %>
 <% } else if(user.role == 'delivery_man') { %>
     <%- include('../partials/delivery_man_dashboard.ejs') %>
 <% } else { %>

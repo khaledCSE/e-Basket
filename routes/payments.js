@@ -1,12 +1,15 @@
 const router = require('express').Router()
+const User = require('../models/User')
 const Cart = require('../models/Cart')
 const productModel = require('../models/Product')
 const Order = require('../models/Order')
+const mail = require('../controllers/mailController')
 
 const loggedIn = require('../config/local-authenticator')
 
 router.get('/checkout', loggedIn, (req, res) => {
     var cart = req.session.cart
+    
     res.render('shop/checkout', { cart: cart })
 })
 
@@ -42,6 +45,7 @@ router.post('/checkout', async (req, res) => {
         
         // res.redirect('/payments/checkout')
         grandTotal = parseFloat((product_cost_sum + delivery_charge).toFixed(2))
+        const code = mail.verifyCodeGenerator(6, 'ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789')
 
         try {
             for (let i = 0; i < products.length; i++) {
@@ -55,8 +59,10 @@ router.post('/checkout', async (req, res) => {
             }
 
             // Save Order
+            console.log(code);
+            
             const new_order = await new Order({
-                user: req.user,
+                user: await User.findOne({ email: req.user.email }),
                 cart: req.session.cart,
                 fname: fname,
                 lname: lname,
@@ -68,10 +74,29 @@ router.post('/checkout', async (req, res) => {
                 status: 'pending',
                 totalQty: req.session.cart.totalQty,
                 delivery: delivery,
-                grandTotal: grandTotal
+                grandTotal: grandTotal,
+                verification: code
             })
             const saved_order = await new_order.save()
+            console.log(`Saved Code: ${saved_order.verification}`);
+            
 
+            // Send mail to the buyer
+            const emailOptions = {
+                to: saved_order.email,
+                subject: "Confirmation Code of Purchase",
+                renderOptions: {
+                  templatePath: "./views/email-templates/confirm_mail_template.ejs",
+                  purpose: "Order Details",
+                  bigMSG: 'Your Order is Shipped!',
+                  orderID: saved_order._id,
+                  verification: saved_order.verification,
+                  msg: 'Please Give these to the deliverer when you have received the package and paid in full.'
+                }
+              };
+              const sent_mail = await mail.outGoingMail(emailOptions);
+            // ######################################
+            
             req.session.cart = {}
             req.flash('info', 'Purchase Complete! Thanks for shopping with e-Basket')
             res.redirect('/')

@@ -26,7 +26,7 @@
     }
 </style>
 <div class="container col-lg-6 col-md-12">
-    <form action="#" method="post" id="delivery-form">
+    <form action="/orders/confirm" method="post" id="delivery-form">
         <center>
             <h1>Welcome <span style="text-decoration: underline;"><%= user.email %></span></h1>
             <h4>Enter Confirmation Information Below</h4><hr>
@@ -35,7 +35,7 @@
         <label for="order_id">Order ID</label>
         <input type="text" class="form-control" id="order_id" name="order_id" required><br>  
         <label for="confirmation_code">Confirmation Code</label>
-        <input type="text" class="form-control" id="confirmation_code" required><br>
+        <input type="text" class="form-control" id="confirmation_code" name="confirmation_code" required><br>
         <button class="btn btn-success btn-block" type="submit">Confirm Payment</button>
     </form>
 </div>

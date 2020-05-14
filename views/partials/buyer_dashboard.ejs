@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="/css/user/dashboard-style.css" />
+
+<script src="/js/vendor/bootstrap.bundle.min.js"></script>
+<script src="/js/vendor/jquery.slimscroll.min.js"></script>
+<script src="/js/dashboard/script.js"></script>
+
+<div class="wrapper d-flex">
+    <div class="sideMenu bg-mattBlackLight">
+      <div class="sidebar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 disabled">
+              <i class="material-icons icon">
+                dashboard
+              </i>
+              <span class="text">Hello, Buyer</span>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a href="/products/add" class="nav-link px-2">
+              <i class="material-icons icon">
+                library_add
+              </i>
+              <span class="text">Add a Product</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2">
+              <i class="material-icons icon"> create </i
+              ><span class="text">Modify Product Info</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2">
+              <i class="material-icons icon">
+                delete_forever
+              </i>
+              <span class="text">Remove a Product</span>
+            </a>
+          </li> -->
+          <li class="nav-item">
+            <a href="/users/profile" class="nav-link px-2">
+              <i class="material-icons icon">
+                settings
+              </i>
+              <span class="text">Account Settings</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link px-2">
+              <i class="material-icons icon">
+                power_settings_new
+              </i>
+              <span class="text">Logout</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 sideMenuToggler">
+              <i class="material-icons icon expandView ">
+                view_list
+              </i>
+              <span class="text">Resize</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <main>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4 my-3">
+              <div class="bg-mattBlackLight px-3 py-3">
+                <h4 class="mb-2">Total Products</h4>
+                <div class="row cardBody">
+                  <div class="col-md-6 offset-md-1 cardInfo"><span class="material-icons">business_center</span></div>
+                  <div class="col-md-4 offset-md-1 cardInfo">12</div>
+                </div>
+                <!-- <div class="progress" style="height: 16px;">
+                  <div
+                    class="progress-bar bg-warning text-mattBlackDark"
+                    role="progressbar"
+                    style="width: 25%;"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    25
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-4 my-3">
+              <div class="bg-mattBlackLight px-3 py-3">
+                <h4 class="mb-2">Pending Products</h4>
+                <div class="row cardBody">
+                  <div class="col-md-6 offset-md-1 cardInfo"><span class="material-icons">schedule</span></div>
+                  <div class="col-md-4 offset-md-1 cardInfo">12</div>
+                </div>
+                <!-- <div class="progress" style="height: 16px;">
+                  <div
+                    class="progress-bar bg-info text-mattBlackDark"
+                    role="progressbar"
+                    style="width: 50%;"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    50
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-4 my-3">
+              <div class="bg-mattBlackLight p-3">
+                <h4 class="mb-2">Total Revenue</h4>
+                <div class="row cardBody">
+                  <div class="col-md-5 offset-md-1 cardInfo"><span class="material-icons">account_balance_wallet</span></div>
+                  <div class="col-md-4 offset-md-1 cardInfo">&#2547 12</div>
+                </div>
+                <!-- <div class="progress" style="height: 16px;">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 80%;"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    80
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="container bg-mattBlackLight" style="padding: 30px;">
+              <h3 class="text-center" id="sells-prompt">Your Orders</h3>
+              <% if( orders.length != 0 ) { %>
+                <!-- Orders -->
+              <% for( let i = 0; i < orders.length; i++ ) { %>
+                <div class="card border-success mb-5">
+                    <div class="card-header bg-transparent border-success" style="background: lightgreen !important; color: darkgreen; font-weight: bold;">Order ID: <%= orders[i]._id %></div>
+                    <div class="card-body" style="background: #020229 !important; color: greenyellow;">
+                        <ul class="list-group">
+                            <% orders[i].items.forEach((item) => { %>
+                                <li class="bg-mattBlackLight list-group-item d-flex justify-content-between align-items-center">
+                                    <%= item.item.title %>
+                                    <span class="badge badge-info badge-pill" style="font-size: large; background: lightgreen; color: darkgreen;"><%= item.qty %></span>
+                                  </li>
+                            <% }) %>
+                          </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-success" style="background: rgb(197, 238, 144) !important; color: darkgreen; font-weight: bold;">Total Purchase Amount: <%= orders[i].cart.totalPrice %></div>
+                  </div>
+              <% } %>
+              <!-- Orders end -->
+              <% } else { %>
+                <h5 class="text-center">You Don't Have any Orders!</h5>
+              <% } %>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
