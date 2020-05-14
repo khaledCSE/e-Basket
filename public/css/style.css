@@ -2,6 +2,12 @@
     padding-left: 10%;
 } */
 
+.card {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.card:hover {
+    box-shadow: none;
+}
 .card img {
     max-height: 150px;
     max-width: 180px;

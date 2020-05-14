@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Order = require('../models/Order')
+const shopIncome = require("../models/shop-income");
 
 router.post('/confirm',async (req, res) => {
     const order_id = req.body.order_id
@@ -12,6 +13,9 @@ router.post('/confirm',async (req, res) => {
         if (order_found) {
             if (order_found._id == order_id && order_found.verification == verification) {
                 const confirm = await Order.findByIdAndUpdate(order_id, { status: 'complete' })
+                const shop_income = await shopIncome.find()
+                const unconfirmed = shop_income[0].unconfirmed_income
+                const actual_income = await shopIncome.findByIdAndUpdate(shop_income[0]._id, { $inc: { income: unconfirmed } })
                 req.flash('info', 'Order Completed! Good Job!')
                 res.redirect('/dashboard')
             } else {

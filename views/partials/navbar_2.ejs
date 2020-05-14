@@ -9,7 +9,8 @@
   <div class="container">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto" id="mainNav">
-          <li class="nav-item">
+          <% if( typeof user == 'undefined' || user.role == 'buyer' ) { %>
+            <li class="nav-item">
               <a class="nav-link" style="color: greenyellow;" href="/cart/details"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp; Cart
                 <% if( typeof session.cart != 'undefined' && session.cart.totalQty != 0 ) { %>
                     <% if( typeof session.cart.totalQty != 'undefined' ) { %>
@@ -18,6 +19,7 @@
                   <% } %>
             </a>
           </li>
+          <% } %>
           <% if(typeof user != 'undefined') { %>
             <a class="nav-link" style="color: greenyellow;" href="/dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp; Dashboard</a>
             <% if( user.role == 'seller' ) { %>
