@@ -70,6 +70,8 @@ router.post('/register', async (req, res) => {
                         new_seller.address = address
                         new_seller.city = city
                         new_seller.post_code = post_code
+                        new_seller.unconfirmed_income = 0
+                        new_seller.income = 0
 
                         const saved_seller = await new_seller.save()
                         const saved_user = await new_user.save()

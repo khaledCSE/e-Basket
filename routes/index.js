@@ -54,12 +54,14 @@ router.get("/dashboard", loggedin, async (req, res) => {
       status: "pending",
     });
     const products = await Product.find({ email: req.user.email });
+    const income = (await Seller.findOne({ email: req.user.email })).income
 
     res.render("user/dashboard", {
       user: req.user,
       products: user_Products,
       pending: pending,
       product_list: products,
+      income: income
     });
   } else if (role == "buyer") {
     const user = await User.findOne({ email: req.user.email });

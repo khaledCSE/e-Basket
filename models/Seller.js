@@ -28,6 +28,14 @@ const sellerSchema = new mongoose.Schema({
     post_code: {
         type: String,
         required: true
+    },
+    unconfirmed_income: {
+        type: Number,
+        required: true
+    },
+    income: {
+        type: Number,
+        required: true
     }
 })
 

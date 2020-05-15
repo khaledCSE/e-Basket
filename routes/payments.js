@@ -8,6 +8,7 @@ const shopIncome = require("../models/shop-income");
 
 const loggedIn = require("../config/local-authenticator");
 const buyerOnly = require("../config/buyerOny");
+const income = require('../controllers/incomeController')
 
 router.use(buyerOnly);
 router.get("/checkout", loggedIn, (req, res) => {
@@ -176,11 +177,14 @@ router.post("/checkout", async (req, res) => {
       // Adding to Shop Income
       const shop_income = await shopIncome.find();
       console.log(shop_income);
-      
+
       const updated_shop_income = await shopIncome.findByIdAndUpdate(
         shop_income[0]._id,
         { $inc: { unconfirmed_income: grandTotal } }
       );
+
+      // Updating Seller Income
+      income.updateSellerIncome(products)
 
       req.session.cart = {};
       req.flash("info", "Purchase Complete! Thanks for shopping with e-Basket");
@@ -194,6 +198,15 @@ router.post("/checkout", async (req, res) => {
     req.flash("info", "Please Enter a City in Bangladesh or Check Spelling");
     res.redirect("/payments/checkout");
   }
+});
+
+router.get("/test", (req, res) => {
+  const cart = new Cart(req.session.cart);
+  const products = cart.generateArray();
+
+  income.updateSellerIncome(products)
+
+  res.redirect("/dashboard");
 });
 
 module.exports = router;
