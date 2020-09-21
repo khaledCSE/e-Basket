@@ -17,7 +17,7 @@ module.exports = (passport) => {
                         role: user_found.role
                     })
                 } else {
-                    
+                    done(null, false)
                 }
             } else {
                 done(null, false)

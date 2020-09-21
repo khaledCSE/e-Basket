@@ -1,36 +1,39 @@
 {
-  "name": "e-basket",
-  "version": "1.0.0",
-  "description": "E-Commerce Website using node.js",
-  "scripts": {
-    "test": "nodemon app.js"
-  },
-  "keywords": [
-    "e-basket",
-    "ecommerce",
-    "node.js"
-  ],
-  "author": "Md. Khaleduzzaman",
-  "license": "MIT",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cloudinary": "^1.21.0",
-    "connect-mongo": "^3.2.0",
-    "ejs": "^3.0.1",
-    "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0",
-    "express-fileupload": "^1.1.6",
-    "express-flash": "0.0.2",
-    "express-session": "^1.17.0",
-    "express-validator": "^6.4.0",
-    "mongoose": "^5.9.3",
-    "node-datetime": "^2.1.2",
-    "nodemailer": "^6.4.6",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.2"
-  },
-  "main": "app.js"
+    "name": "e-basket",
+    "version": "1.0.0",
+    "description": "E-Commerce Website using node.js",
+    "scripts": {
+        "test": "nodemon app.js"
+    },
+    "keywords": [
+        "e-basket",
+        "ecommerce",
+        "node.js"
+    ],
+    "author": "Md. Khaleduzzaman",
+    "license": "MIT",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cloudinary": "^1.21.0",
+        "connect-mongo": "^3.2.0",
+        "ejs": "^3.0.1",
+        "express": "^4.17.1",
+        "express-ejs-layouts": "^2.5.0",
+        "express-fileupload": "^1.1.6",
+        "express-flash": "0.0.2",
+        "express-session": "^1.17.0",
+        "express-validator": "^6.4.0",
+        "mongoose": "^5.9.3",
+        "node-datetime": "^2.1.2",
+        "nodemailer": "^6.4.6",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    },
+    "main": "app.js",
+    "engines": {
+        "node": "v14.1.0"
+    }
 }

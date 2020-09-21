@@ -108,6 +108,8 @@ router.get("/register/:userType", notLoggedin, (req, res) => {
   res.render("user/add-user", { userType: userType });
 });
 
+router.get("/terms", notLoggedin, (req, res) => res.render("user/terms"));
+
 router.get("/add-admin", (req, res) => res.render("user/register"));
 
 module.exports = router;

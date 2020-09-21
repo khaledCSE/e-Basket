@@ -100,10 +100,16 @@ router.get('/delete/:id', loggedin, async (req, res) => {
     const product_found = await Product.findOne({ _id: product_id })
 
     const public_id = product_found.image_id
-    const result = await cloudinary.uploader.destroy(public_id)
-    const removed_product = await Product.findOneAndDelete({ _id: product_id })
-    req.flash('info', 'Product Deleted!')
-    res.redirect('/products/add')
+    try {
+        const result = await cloudinary.uploader.destroy(public_id)
+        const removed_product = await Product.findOneAndDelete({ _id: product_id })
+        req.flash('info', 'Product Deleted!')
+        res.redirect('/products/add')
+    } catch (error) {
+        console.log(error)
+        req.flash(error)
+        res.redirect('/products/add')
+    }
 })
 
 module.exports = router
