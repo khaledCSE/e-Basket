@@ -29,17 +29,25 @@ router.get("/", async (req, res) => {
 });
 
 router.get('/initIncome', async (req, res) => {
-  if (typeof req.user != 'undefined' && req.user.role == 'admin') {
-    const new_shop_income = new shopIncome({
-      unconfirmed_income: 0,
-      income: 0
-    })
-    const income_init = await new_shop_income.save()
-    console.log(income_init);
-    res.redirect('/dashboard')
-  } else {
-    res.redirect('/')
-  }
+  // if (typeof req.user != 'undefined' && req.user.role == 'admin') {
+  //   const new_shop_income = new shopIncome({
+  //     unconfirmed_income: 0,
+  //     income: 0
+  //   })
+  //   const income_init = await new_shop_income.save()
+  //   console.log(income_init);
+  //   res.redirect('/dashboard')
+  // } else {
+  //   res.redirect('/')
+  // }
+
+  const new_shop_income = new shopIncome({
+    unconfirmed_income: 0,
+    income: 0
+  })
+  const income_init = await new_shop_income.save()
+  console.log(income_init);
+  res.redirect('/dashboard')
 })
 
 router.get("/dashboard", loggedin, async (req, res) => {
@@ -56,7 +64,7 @@ router.get("/dashboard", loggedin, async (req, res) => {
     const products = await Product.find({ email: req.user.email });
     const income = (await Seller.findOne({ email: req.user.email })).income
 
-    res.render("user/dashboard", {
+    return res.render("user/dashboard", {
       user: req.user,
       products: user_Products,
       pending: pending,
@@ -71,7 +79,7 @@ router.get("/dashboard", loggedin, async (req, res) => {
       order.items = cart.generateArray();
     });
 
-    res.render("user/dashboard", { orders: orders });
+    return res.render("user/dashboard", { orders: orders });
   } else {
     const sellers = await Seller.countDocuments();
     const products = await Product.countDocuments({ status: "accepted" });
@@ -79,7 +87,7 @@ router.get("/dashboard", loggedin, async (req, res) => {
     const pending_products = await Product.find({ status: "pending" });
     const revenue = (await shopIncome.find())[0].income
 
-    res.render("user/dashboard", {
+    return res.render("user/dashboard", {
       user: req.user,
       sellers: sellers,
       products: products,

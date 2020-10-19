@@ -12,6 +12,8 @@ const verifyCodeGenerator = (len, arr) => {
 const outGoingMail = async (options) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
+    host: 'mail.google.com',
+    port: 587,
     auth: {
       user: "ebasketshop.20@gmail.com",
       pass: "e-Basket_2020",
