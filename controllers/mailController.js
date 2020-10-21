@@ -19,6 +19,8 @@ const outGoingMail = async (options) => {
         //   pass: "e-Basket_2020",
         // },
         service: 'Yahoo',
+        host: 'smtp.mail.yahoo.com',
+        port: 587,
         auth: {
             user: 'ebasketshop@yahoo.com',
             pass: 'e-Basket_2020',
