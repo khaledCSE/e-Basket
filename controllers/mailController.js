@@ -11,20 +11,20 @@ const verifyCodeGenerator = (len, arr) => {
 
 const outGoingMail = async (options) => {
     const transporter = nodemailer.createTransport({
-        // service: "gmail",
-        // host: 'mail.google.com',
-        // port: 587,
-        // auth: {
-        //   user: "ebasketshop.20@gmail.com",
-        //   pass: "e-Basket_2020",
-        // },
-        service: 'Yahoo',
-        host: 'smtp.mail.yahoo.com',
+        service: 'Gmail',
+        host: 'smtp.gmail.com',
         port: 587,
         auth: {
-            user: 'ebasketshop@yahoo.com',
+            user: 'ebasketshop.20@gmail.com',
             pass: 'e-Basket_2020',
         },
+        // service: 'Yahoo',
+        // host: 'smtp.mail.yahoo.com',
+        // port: 587,
+        // auth: {
+        //     user: 'ebasketshop@yahoo.com',
+        //     pass: 'e-Basket_2020',
+        // },
     });
     const data = await ejs.renderFile(options.renderOptions.templatePath, {
         purpose: options.renderOptions.purpose,
