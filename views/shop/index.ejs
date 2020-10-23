@@ -1,6 +1,17 @@
 <link rel="stylesheet" href="css/style.css">
 <%- include('../partials/messages') %>
 
+<!-- Search Products. -->
+<div class="container col-md-4 justify-content-center" style="padding: 15px;">
+  <h3 class="text-center" style="color: #020229; font-weight: bold;">Search products</h3>
+  <input type="text" class="form-control mb-2" id="search-product" placeholder="Enter Product Name ...">
+  <ul class="list-group" id="search-result">
+    <!-- <li class="list-group-item"><img src="https://res.cloudinary.com/e-basket/image/upload/v1600763339/products/h7gqbuik2b2ouiqfdte7.png" width="90" height="60"> Item 1</li>
+    <li class="list-group-item">Item 2</li>
+    <li class="list-group-item">Item 3</li> -->
+  </ul>
+</div>
+
 <% if( typeof products != 'undefined' ) { %>
   <% for( var i = 0; i < products.length; i++ ) { %>
     <div class="row justify-content-around">
@@ -31,3 +42,18 @@
     <h3 style="color: indigo; font-weight: bolder;">Website is under maintainance. Sorry for the inconvenience!</h3>
   </div>
 <% } %>
+
+<!-- Placeholder for all products. -->
+<% if( allProducts ) { %>
+  <ul hidden>
+    <% for( var i = 0; i < allProducts.length; i++ ) { %>
+      <li class="pItem" data-product-id="<%= allProducts[i].id %>"
+          data-product-name="<%= allProducts[i].title %>"
+          data-image-link="<%= allProducts[i].imagePath %>"
+          >
+        </li>
+    <% } %>
+  </ul>
+<% } %>
+
+<script src="/js/shop/search.js"></script>

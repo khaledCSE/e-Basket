@@ -21,8 +21,10 @@ router.get('/', async (req, res) => {
                 productChunks.push(products.slice(i, i + chunkSize));
             }
         }
-
-        res.render('shop/index', { products: productChunks });
+        res.render('shop/index', {
+            products: productChunks,
+            allProducts: products,
+        });
     } else {
         req.flash('info_err', 'Access Products Page with Buyer Account.');
         res.redirect('/dashboard');
