@@ -1,0 +1,58 @@
+<style>
+    .card img {
+        height: 300px;
+        width: 500px;
+        margin-bottom: 20px;
+    }
+    .card-text {
+        text-align: justify;
+    }
+    @media (max-width: 720px) {
+        .card img {
+            height: 150px;
+            width: 250px;
+        }
+    }
+</style>
+<div class="container" style="margin-top: 10vh">
+    <div class="card">
+        <div class="card-header">Category: <%= product.category %></div>
+        <div class="card-body">
+            <div class="row">
+                <img
+                    class="col-md-6 col-sm-12"
+                    src="<%= product.imagePath %>"
+                    alt="Product Image"
+                />
+                <div class="col-md-6 col-sm-12">
+                    <h5 class="card-title"><%= product.title %></h5>
+                    <p><strong>Price: &#2547; <%= product.price %></strong></p>
+                    <p>
+                        <strong
+                            >Seller: <%= seller == null ? 'Admin' : seller.email
+                            %></strong
+                        >
+                    </p>
+                    <p>
+                        <strong
+                            >Product in stock: <%= product.inStock > 0 ?
+                            product.inStock : 'Out of stock' %></strong
+                        >
+                    </p>
+                </div>
+            </div>
+            <strong>Short Intro</strong>
+            <hr />
+            <p class="card-text"><%= product.description %></p>
+            <strong>Full Description</strong>
+            <hr />
+            <p class="card-text">
+                <% if(typeof product.detail_info != 'undefined') { %> <%=
+                product.detail_info %> <% } else { %> 'Nothing to show' <% } %>
+            </p>
+            <a href="/cart/add<%= product._id %>" class="btn btn-success"
+                >Add to Cart</a
+            >
+        </div>
+    </div>
+</div>

@@ -20,7 +20,7 @@
         <div class="card">
           <img src="<%= product.imagePath %>" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title"><%= product.title %></h5>
+            <a class="card-title" href="/products/<%= product._id %>"><%= product.title %></a>
             <p class="card-text"><%= product.description %></p>
             <% if( product.inStock > 0 ) { %>
               <p class="text-center" style="font-size: x-large; font-weight: bold; color: green;">In Stock: <%= product.inStock %></p>

@@ -44,7 +44,7 @@ search.addEventListener('keyup', (e) => {
             img.style.margin = '5px';
 
             var a = document.createElement('a');
-            a.href = `http://localhost:4000/products/${res[i].id}`;
+            a.href = `/products/${res[i].id}`;
             a.innerText = res[i].name;
 
             li.appendChild(img);

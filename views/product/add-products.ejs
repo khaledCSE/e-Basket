@@ -1,35 +1,83 @@
-<link rel="stylesheet" href="/css/product/add-product.css">
+<link rel="stylesheet" href="/css/product/add-product.css" />
 
 <!-- form -->
 <div class="container col-md-10 col-lg-6" id="main">
     <form action="/products/add" method="post" enctype="multipart/form-data">
-      <h3 class="text-center">Add Product</h3>
-      <%- include('../partials/messages') %>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        <h3 class="text-center">Add Product</h3>
+        <%- include('../partials/messages') %>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01"
+                    >Upload</span
+                >
+            </div>
+            <div class="custom-file">
+                <input
+                    type="file"
+                    name="product_image"
+                    class="custom-file-input"
+                    id="inputGroupFile01"
+                    accept="image/*"
+                    required
+                />
+                <label class="custom-file-label" for="inputGroupFile01"
+                    >Choose Product Image</label
+                >
+            </div>
         </div>
-        <div class="custom-file">
-          <input type="file" name="product_image" class="custom-file-input" id="inputGroupFile01" accept="image/*" required>
-          <label class="custom-file-label" for="inputGroupFile01">Choose Product Image</label>
-        </div>
-      </div>
-      <label for="category">Product Category</label>
-      <select class="form-control" name="category" id="category" required>
-        <option selected>Select Product Category</option>
-        <option class="mainVal" value="sports">Sports</option>
-        <option value="clothing">Clothing</option>
-        <option value="electronics">Electronics</option>
-      </select>
-      <label for="title" class="txtLabel">Product Title</label>
-      <input type="text" id="title" name="title" class="form-control" required>
-      <label for="description" class="txtLabel">Product Description</label>
-      <input type="text" id="description" name="description" class="form-control" required>
-      <label for="price" class="txtLabel">Price</label>
-      <input type="number" min="1" id="price" name="price" class="form-control" required>
-      <input type="text" name="status" value="pending" hidden>
-      <label for="inStock" class="txtLabel">Quantity</label>
-      <input type="number" min="1" id="inStock" name="inStock" class="form-control" required>
-      <button type="submit" id="btn" class="btn btn-success btn-block">Add Product</button>
+        <label for="category">Product Category</label>
+        <select class="form-control" name="category" id="category" required>
+            <option selected>Select Product Category</option>
+            <option class="mainVal" value="sports">Sports</option>
+            <option value="clothing">Clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="others">Others</option>
+        </select>
+        <label for="title" class="txtLabel">Product Title</label>
+        <input
+            type="text"
+            id="title"
+            name="title"
+            class="form-control"
+            required
+        />
+        <label for="description" class="txtLabel">Product Description</label>
+        <input
+            type="text"
+            id="description"
+            name="description"
+            class="form-control"
+            required
+        />
+        <label for="detail_info" class="txtLabel">Detailed Information</label>
+        <textarea
+            type="text"
+            id="detail_info"
+            name="detail_info"
+            class="form-control"
+            required
+        ></textarea>
+        <label for="price" class="txtLabel">Price</label>
+        <input
+            type="number"
+            min="1"
+            id="price"
+            name="price"
+            class="form-control"
+            required
+        />
+        <input type="text" name="status" value="pending" hidden />
+        <label for="inStock" class="txtLabel">Quantity</label>
+        <input
+            type="number"
+            min="1"
+            id="inStock"
+            name="inStock"
+            class="form-control"
+            required
+        />
+        <button type="submit" id="btn" class="btn btn-success btn-block">
+            Add Product
+        </button>
     </form>
-  </div>
+</div>
