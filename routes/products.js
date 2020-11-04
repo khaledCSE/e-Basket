@@ -118,9 +118,10 @@ router.get('/:id', async (req, res) => {
 
         res.render('product/single-product', { product, seller });
     } catch (error) {
-        console.log(error.message);
-        req.flash('info_err', 'Database Error');
-        res.redirect('/');
+        // console.log(error.message);
+        // req.flash('info_err', 'Database Error');
+        // res.redirect('/');
+        res.send(error);
     }
 });
 
