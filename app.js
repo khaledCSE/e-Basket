@@ -66,5 +66,11 @@ app.use('/cart', require('./routes/cart'));
 app.use('/payments', require('./routes/payments'));
 app.use('/orders', require('./routes/orders'));
 
+// Error Handling
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).render('errors/500');
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
