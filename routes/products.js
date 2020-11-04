@@ -7,6 +7,7 @@ const cloudinary = require('cloudinary').v2;
 
 const Product = require('../models/Product');
 const Seller = require('../models/Seller');
+const Buyer = require('../models/Buyer');
 
 const productController = require('../controllers/product-controller');
 
@@ -112,10 +113,64 @@ router.get('/:id', async (req, res) => {
     try {
         const product = await Product.findById(id);
         const seller = await Seller.findOne({ email: product.email });
+        const oldUrl = `/products/${id}`;
+        req.session.oldUrl = oldUrl;
+
         res.render('product/single-product', { product, seller });
     } catch (error) {
         console.log(error.message);
         req.flash('info_err', 'Database Error');
+        res.redirect('/');
+    }
+});
+
+router.post('/comments/add', async (req, res) => {
+    const { id, comment } = req.body;
+    try {
+        const user_email = req.user.email;
+        const buyer = await Buyer.findOne({ email: user_email });
+        const userName = `${buyer.fname} ${buyer.lname}`;
+
+        const product = await Product.findById(id);
+        const comments_found = product.comments;
+        const date = new Date();
+        const months_arr = [
+            '',
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+        ];
+        const day = date.getDate();
+        const month = months_arr[date.getMonth()];
+        const year = date.getFullYear();
+        const date_today = `${day} ${month}, ${year}`;
+        const updated_comments = [
+            ...comments_found,
+            {
+                user: buyer._id,
+                userName,
+                comment,
+                posted: date_today,
+            },
+        ];
+        const updated = await Product.findByIdAndUpdate(id, {
+            comments: updated_comments,
+        });
+        req.flash('info', 'Thanks for your valuable comment.');
+        res.redirect(`/products/${id}`);
+    } catch (error) {
+        console.log(error.message);
+        req.flash('info_err', 'Database Error');
+        res.redirect('/');
     }
 });
 

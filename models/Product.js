@@ -11,6 +11,17 @@ const productSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     status: { type: String, required: true },
     inStock: { type: Number, required: true },
+    comments: {
+        type: [
+            {
+                user: { type: mongoose.Schema.Types.ObjectID },
+                userName: { type: String, default: '' },
+                comment: { type: String, default: '' },
+                posted: { type: String, default: '' },
+            },
+        ],
+        default: [],
+    },
 });
 
 module.exports = mongoose.model('products', productSchema);
