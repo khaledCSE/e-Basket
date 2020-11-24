@@ -89,6 +89,7 @@ router.get('/dashboard', loggedin, async (req, res) => {
         const pending = await Product.countDocuments({ status: 'pending' });
         const pending_products = await Product.find({ status: 'pending' });
         const revenue = (await shopIncome.find())[0].income;
+        const orders = (await Order.find()).length;
 
         return res.render('user/dashboard', {
             user: req.user,
@@ -97,6 +98,7 @@ router.get('/dashboard', loggedin, async (req, res) => {
             pending: pending,
             pending_products: pending_products,
             revenue: revenue,
+            orders,
         });
     }
 });

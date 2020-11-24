@@ -105,8 +105,11 @@
             <strong>Full Description</strong>
             <hr />
             <p class="card-text">
-                <% if(typeof product.detail_info != 'undefined') { %> <%=
-                product.detail_info %> <% } else { %> 'Nothing to show' <% } %>
+                <% if(typeof product.detail_info != 'undefined') { %>
+                    <%= product.detail_info %> 
+                <% } else { %> 
+                    <%= 'Nothing to show' %> 
+                <% } %>
             </p>
             <!-- Comments Section -->
             <div class="comments">
@@ -141,7 +144,7 @@
 
                     <% if( (product.comments).length > 0 ) { %>
                         <% for( let i = 0; i < (product.comments).length; i++ ) { %>
-                            <a href="#" class="list-group-item list-group-item-action">
+                            <div class="list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1 text-info"><%= (product.comments)[i].userName %></h5>
                                     <small><%= (product.comments)[i].posted %></small>
@@ -149,7 +152,12 @@
                                 <p class="mb-1">
                                     <%= (product.comments)[i].comment %>
                                 </p>
-                            </a>
+                                <% if( typeof user !== 'undefined' ) { %>
+                                    <% if( (product.comments)[i].user === user.email ) { %>
+                                        <small><a href="/products/comments/delete/<%= product._id %>/<%= (product.comments)[i]._id %>" class="text-danger">Remove Comment</a></small>
+                                    <% } %>
+                                <% } %>
+                                    </div>
                         <% } %>
                     <% } %>
                 </div>

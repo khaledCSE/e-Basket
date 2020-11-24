@@ -41,6 +41,7 @@ router.post('/add', loggedin, async (req, res) => {
     const category = req.body.category;
     const title = req.body.title;
     const description = req.body.description;
+    const detail_info = req.body.detail_info;
     const price = req.body.price;
     const status = req.body.status;
     const inStock = req.body.inStock;
@@ -71,6 +72,7 @@ router.post('/add', loggedin, async (req, res) => {
                 category: category,
                 title: title,
                 description: description,
+                detail_info,
                 price: price,
                 status: status,
                 inStock: inStock,
@@ -118,14 +120,13 @@ router.get('/:id', async (req, res) => {
 
         res.render('product/single-product', { product, seller });
     } catch (error) {
-        // console.log(error.message);
-        // req.flash('info_err', 'Database Error');
-        // res.redirect('/');
-        res.send(error);
+        console.log(error.message);
+        req.flash('info_err', 'Database Error');
+        res.redirect('/');
     }
 });
 
-router.post('/comments/add', async (req, res) => {
+router.post('/comments/add', loggedin, async (req, res) => {
     const { id, comment } = req.body;
     try {
         const user_email = req.user.email;
@@ -157,7 +158,7 @@ router.post('/comments/add', async (req, res) => {
         const updated_comments = [
             ...comments_found,
             {
-                user: buyer._id,
+                user: buyer.email,
                 userName,
                 comment,
                 posted: date_today,
@@ -174,6 +175,31 @@ router.post('/comments/add', async (req, res) => {
         res.redirect('/');
     }
 });
+
+router.get(
+    '/comments/delete/:productID/:commentID',
+    loggedin,
+    async (req, res, next) => {
+        const { productID, commentID } = req.params;
+
+        try {
+            const product = await Product.findById(productID);
+            const comments = product.comments;
+            const reduced = comments.filter(
+                (comment) => comment._id != commentID
+            );
+            const updated = await Product.findByIdAndUpdate(productID, {
+                comments: reduced,
+            });
+            req.flash('info', 'Your comment has been removed.');
+            res.redirect(`/products/${productID}`);
+        } catch (error) {
+            console.error(error);
+            req.flash('info_err', 'Database Error');
+            res.redirect('/');
+        }
+    }
+);
 
 router.get('/delete/:id', loggedin, async (req, res) => {
     const product_id = req.params.id;

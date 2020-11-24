@@ -14,7 +14,7 @@ const productSchema = new mongoose.Schema({
     comments: {
         type: [
             {
-                user: { type: mongoose.Schema.Types.ObjectID },
+                user: { type: String, default: '' },
                 userName: { type: String, default: '' },
                 comment: { type: String, default: '' },
                 posted: { type: String, default: '' },
